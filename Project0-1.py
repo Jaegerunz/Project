@@ -13,7 +13,7 @@ def find_Car(searchCar):
         print(searchCar + " is not an authorized vehicle, if you recieved this in error please check the spelling and try again.")
 #print statements for input request
 print(linebreak)
-print("AutoCountry Vehicle Finder v0.1")
+print("AutoCountry Vehicle Finder v0.2")
 print(linebreak)
 #input request
 menuSelect=int(input("Please make a selection from the following menu: ""\n " "\n1.PRINT all Authorized Vehicles" "\n2.SEARCH for Authorized Vehicle" "\n3.Exit" "\n" ))
