@@ -16,7 +16,7 @@ print(linebreak)
 print("AutoCountry Vehicle Finder v0.2")
 print(linebreak)
 #input request
-menuSelect=int(input("Please make a selection from the following menu: ""\n " "\n1.PRINT all Authorized Vehicles" "\n2.SEARCH for Authorized Vehicle" "\n3.Exit" "\n" ))
+menuSelect=int(input("Please make a selection from the following menu: ""\n " "\n1.PRINT all Authorized Vehicles" "\n2.SEARCH for Authorized Vehicle""\n""3.ADD Authorized Vehile" "\n4.Exit" "\n" ))
 #selection logic
 #i had to google some For syntax but this is much neater, i'm leaving the old prints statements in comment as a reference
 if menuSelect == 1:
@@ -32,7 +32,9 @@ if menuSelect == 2:
     print(linebreak)
     searchCar=input("Please Enter the full Vehicle name: ")
     find_Car(searchCar)
-if menuSelect ==3:
+#if menuSelect == 3:
+    
+if menuSelect ==4:
     print("Thank you for using AutoCountry Vehicle Finder, good-bye!")
     sys.exit()
 
