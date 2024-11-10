@@ -30,7 +30,7 @@ def deleteCar(searchCar, allowedVehiclesList):
               allowedVehiclesList = [car for car in allowedVehiclesList if car != searchCar]
               with open(vehicleFile, 'w') as file:
                    file.write(','.join(allowedVehiclesList))
-              print("You have REMOVED "+searchCar +"as an authorized Vehicle")
+              print("You have REMOVED "+searchCar +" as an authorized Vehicle")
 
          else:
             print ("REMOVE Cancelled.")
@@ -50,7 +50,6 @@ def displayMenu():
         "\n5.Exit""\n" ))
     return menuSelect
 #replacing old menu with looping menu so I dont have to run the program over and over
-#i had to google some For syntax but this is much neater, i'm leaving the old print statements in comment as a reference
 while True:
      menuSelect = displayMenu()
      if menuSelect == 1:
@@ -66,7 +65,7 @@ while True:
           addVehicle = input("Please Enter the full Vehicle name you would like to add: ")
           with open(vehicleFile, "a") as file:
                file.write(", " + addVehicle.strip())
-          print("YOu have added "+ addVehicle + "as an authorized vehicle.")
+          print("You have added "+ addVehicle + " as an authorized vehicle.")
           input("Press Enter to return to the main menu.")
      elif menuSelect == 4:
           searchCar =input("Please Enter the full Vehicle name you would like to REMOVE: ")
