@@ -23,34 +23,32 @@ def find_Car(searchCar):
     else:
         print(searchCar + " is not an authorized vehicle. If you received this in error, please check the spelling and try again.")
 
-#Menu
-print(linebreak)
-print("AutoCountry Vehicle Finder v0.3")
-print(linebreak)
-#input request
-menuSelect=int(input("Please make a selection from the following menu: ""\n " "\n1.PRINT all Authorized Vehicles" "\n2.SEARCH for Authorized Vehicle""\n""3.ADD Authorized Vehile" "\n4.Exit" "\n" ))
-#selection logic
-#i had to google some For syntax but this is much neater, i'm leaving the old print statements in comment as a reference
-if menuSelect == 1:
-    for car in allowedVehiclesList:
-        print(car)
-    #print(allowedVehiclesList[0])
-    #print(allowedVehiclesList[1])
-    #print(allowedVehiclesList[2])
-    #print(allowedVehiclesList[3])
-    #print(allowedVehiclesList[4])
-#Menu Selection Opperations
-if menuSelect == 2:
+def displayMenu():
     print(linebreak)
-    searchCar=input("Please Enter the full Vehicle name: ")
-    find_Car(searchCar)
-if menuSelect == 3:
-    addVehicle=input("Please Enter the full Vehicle name you woud like to add:")
-    with open(r"C:\COP1000 Files\Project\AllowedVehiclesList.txt", "a") as file:
-        file.write(str(", "+addVehicle))
-    print("You have added "+ addVehicle +" as an authorized vehicle")
-if menuSelect ==4:
-    print("Thank you for using AutoCountry Vehicle Finder, good-bye!")
-    sys.exit()
+    print("AutoCountry Vehicle Finder v0.3")
+    print(linebreak)
+    menuSelect=int(input("Please make a selection from the following menu: ""\n " "\n1.PRINT all Authorized Vehicles" "\n2.SEARCH for Authorized Vehicle""\n""3.ADD Authorized Vehile" "\n4.Exit" "\n" ))
+    return menuSelect
+#replacing old menu with looping menu so I dont have to run the program over and over
+#i had to google some For syntax but this is much neater, i'm leaving the old print statements in comment as a reference
+while True:
+     menuSelect = displayMenu()
+     if menuSelect == 1:
+          for car in allowedVehiclesList:
+               print(car)
+          input("Press Enter to return to the main menu.")
+     elif menuSelect ==2:
+          print(linebreak)
+          searchCar = input("Please Enter the full Vehicle name: ")
+          find_Car(searchCar)
+          input("Press Enter to return to the main menu.")
+     elif menuSelect == 3:
+          addVehicle = input("Please Enter the full Vehicle name you would like to add: ")
+          with open(vehicleFile, "a") as file:
+               file.write(", " + addVehicle.strip())
+          print("YOu have added "+ addVehicle + "as an authorized vehicle.")
+          input("Press Enter to return to the main menu.")
 
-
+     elif menuSelect ==4:
+          print("Thank you for using AutoCountry Vehicle Finder, good-bye!")
+          sys.exit()
