@@ -22,12 +22,32 @@ def find_Car(searchCar):
         print(searchCar + " is an authorized vehicle.")
     else:
         print(searchCar + " is not an authorized vehicle. If you received this in error, please check the spelling and try again.")
+#v0.4 remove vehicle
+def deleteCar(searchCar, allowedVehiclesList):
+    if searchCar in allowedVehiclesList:
+         confirm= input("Are you sure you want to remove "+ searchCar + "from the Authorized Vehicles List Y/N?")
+         if confirm == "Y":
+              allowedVehiclesList = [car for car in allowedVehiclesList if car != searchCar]
+              with open(vehicleFile, 'w') as file:
+                   file.write(','.join(allowedVehiclesList))
+              print("You have REMOVED "+searchCar +"as an authorized Vehicle")
 
+         else:
+            print ("REMOVE Cancelled.")
+    else:
+         print(searchCar+" is not on the authorized vehicle list and cannot be removed.")
+         
 def displayMenu():
     print(linebreak)
-    print("AutoCountry Vehicle Finder v0.3")
+    print("AutoCountry Vehicle Finder v0.4")
     print(linebreak)
-    menuSelect=int(input("Please make a selection from the following menu: ""\n " "\n1.PRINT all Authorized Vehicles" "\n2.SEARCH for Authorized Vehicle""\n""3.ADD Authorized Vehile" "\n4.Exit" "\n" ))
+    menuSelect=int(input(
+        "Please make a selection from the following menu: ""\n "
+        "\n1.PRINT all Authorized Vehicles"
+        "\n2.SEARCH for Authorized Vehicle"
+        "\n""3.ADD Authorized Vehile"
+        "\n""4.DELETE Authorized Vehicle" 
+        "\n5.Exit""\n" ))
     return menuSelect
 #replacing old menu with looping menu so I dont have to run the program over and over
 #i had to google some For syntax but this is much neater, i'm leaving the old print statements in comment as a reference
@@ -48,7 +68,11 @@ while True:
                file.write(", " + addVehicle.strip())
           print("YOu have added "+ addVehicle + "as an authorized vehicle.")
           input("Press Enter to return to the main menu.")
+     elif menuSelect == 4:
+          searchCar =input("Please Enter the full Vehicle name you would like to REMOVE: ")
+          deleteCar(searchCar, allowedVehiclesList)
+          input("Press Enter to return to the main menu.")
 
-     elif menuSelect ==4:
+     elif menuSelect ==5:
           print("Thank you for using AutoCountry Vehicle Finder, good-bye!")
           sys.exit()
