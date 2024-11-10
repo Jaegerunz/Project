@@ -1,17 +1,28 @@
 #This is the start of Project 0-1
 #AllowedVehiclesList = ['Ford F-150', 'Chevrolet Silverado', 'Tesla Cybertruck', 'Toyota Trundra', 'Nissan Titan']
 import sys
-vehicleFile=open(r"C:\COP1000 Files\Project\AllowedVehiclesList.txt", "r")
+vehicleFile= r"C:\COP1000 Files\Project\AllowedVehiclesList.txt"
+def readVehicleModels(vehicleFile):
+        with open (r"C:\COP1000 Files\Project\AllowedVehiclesList.txt", 'r') as file:
+            data = file.read().strip()
+            allowedVehicleList= [car.strip() for car in data.split (',')]
+        return allowedVehicleList
 linebreak= "********************************"
-allowedVehiclesList = [vehicleFile.read()]
+allowedVehiclesList = readVehicleModels(vehicleFile)
 menuSelect= 0
-searchCar="string"
 #Function for car searches called in step 2
 def find_Car(searchCar):
-    if searchCar in allowedVehiclesList:
+    found = False
+    for car in allowedVehiclesList:
+        if car == searchCar:
+            found = True
+            break
+
+    if found:
         print(searchCar + " is an authorized vehicle.")
     else:
-        print(searchCar + " is not an authorized vehicle, if you recieved this in error please check the spelling and try again.")
+        print(searchCar + " is not an authorized vehicle. If you received this in error, please check the spelling and try again.")
+
 #Menu
 print(linebreak)
 print("AutoCountry Vehicle Finder v0.3")
