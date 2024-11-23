@@ -13,19 +13,21 @@ allowedVehiclesList = readVehicleModels(vehicleFile)
 menuSelect= 0
 #Function for car searches called in step 2
 def find_Car(searchCar):
-    found = False
-    for car in allowedVehiclesList:
+     allowedVehiclesList = readVehicleModels(vehicleFile)
+     found = False
+     for car in allowedVehiclesList:
         if car == searchCar:
             found = True
             break
 
-    if found:
+     if found:
         print(searchCar + " is an authorized vehicle.")
-    else:
+     else:
         print(searchCar + " is not an authorized vehicle. If you received this in error, please check the spelling and try again.")
 #v0.4 remove vehicle
-def deleteCar(searchCar, allowedVehiclesList):
-    if searchCar in allowedVehiclesList:
+def deleteCar(searchCar):
+     allowedVehiclesList = readVehicleModels(vehicleFile)
+     if searchCar in allowedVehiclesList:
          confirm= input("Are you sure you want to remove "+ searchCar + "from the Authorized Vehicles List Y/N?")
          if confirm == "Y":
               allowedVehiclesList = [car for car in allowedVehiclesList if car != searchCar]
@@ -35,28 +37,29 @@ def deleteCar(searchCar, allowedVehiclesList):
 
          else:
             print ("REMOVE Cancelled.")
-    else:
+     else:
          print(searchCar+" is not on the authorized vehicle list and cannot be removed.")
          
 def displayMenu():
-    print(linebreak)
-    print("AutoCountry Vehicle Finder v"+ str(versionNum))
-    print(linebreak)
-    menuSelect=int(input(
+     print(linebreak)
+     print("AutoCountry Vehicle Finder v"+ str(versionNum))
+     print(linebreak)
+     menuSelect=int(input(
         "Please make a selection from the following menu: ""\n "
         "\n1.PRINT all Authorized Vehicles"
         "\n2.SEARCH for Authorized Vehicle"
         "\n""3.ADD Authorized Vehile"
         "\n""4.DELETE Authorized Vehicle" 
         "\n5.Exit""\n" ))
-    return menuSelect
+     return menuSelect
 #replacing old menu with looping menu so I dont have to run the program over and over
 #time to factor out the remaining "EVENTS" into functions
 def menu_Print():
-      print("The Auto Country sales manager has authorized the purchase and selling of the following vehicles:")
-      for car in allowedVehiclesList:
+     allowedVehiclesList = readVehicleModels(vehicleFile)
+     print("The Auto Country sales manager has authorized the purchase and selling of the following vehicles:")
+     for car in allowedVehiclesList:
           print(car)
-      input("Press Enter to return to the main menu.")
+     input("Press Enter to return to the main menu.")
 
 
 def add_Car(vehicleFile):
@@ -79,7 +82,7 @@ while True:
           add_Car(vehicleFile)
      elif menuSelect == 4:
           searchCar =input("Please Enter the full Vehicle name you would like to REMOVE: ")
-          deleteCar(searchCar, allowedVehiclesList)
+          deleteCar(searchCar)
           input("Press Enter to return to the main menu.")
 
      elif menuSelect ==5:
