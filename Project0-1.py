@@ -51,6 +51,7 @@ def displayMenu():
         "\n5.Exit""\n" ))
     return menuSelect
 #replacing old menu with looping menu so I dont have to run the program over and over
+#time to factor out the remaining "EVENTS" into functions
 while True:
      menuSelect = displayMenu()
      if menuSelect == 1:
