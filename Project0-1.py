@@ -53,7 +53,6 @@ def displayMenu():
         "\n5.Exit""\n" ))
      return menuSelect
 #replacing old menu with looping menu so I dont have to run the program over and over
-#time to factor out the remaining "EVENTS" into functions
 def menu_Print():
      allowedVehiclesList = readVehicleModels(vehicleFile)
      print("The Auto Country sales manager has authorized the purchase and selling of the following vehicles:")
