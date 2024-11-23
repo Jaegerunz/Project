@@ -2,6 +2,7 @@
 #AllowedVehiclesList = ['Ford F-150', 'Chevrolet Silverado', 'Tesla Cybertruck', 'Toyota Trundra', 'Nissan Titan']
 import sys
 vehicleFile= r"C:\COP1000 Files\Project\AllowedVehiclesList.txt"
+versionNum=0.5
 def readVehicleModels(vehicleFile):
         with open (r"C:\COP1000 Files\Project\AllowedVehiclesList.txt", 'r') as file:
             data = file.read().strip()
@@ -39,7 +40,7 @@ def deleteCar(searchCar, allowedVehiclesList):
          
 def displayMenu():
     print(linebreak)
-    print("AutoCountry Vehicle Finder v0.4")
+    print("AutoCountry Vehicle Finder v"+ str(versionNum))
     print(linebreak)
     menuSelect=int(input(
         "Please make a selection from the following menu: ""\n "
@@ -53,6 +54,7 @@ def displayMenu():
 while True:
      menuSelect = displayMenu()
      if menuSelect == 1:
+          print("The Auto Country sales manager has authorized the purchase and selling of the following vehicles:")
           for car in allowedVehiclesList:
                print(car)
           input("Press Enter to return to the main menu.")
