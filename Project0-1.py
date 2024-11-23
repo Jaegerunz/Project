@@ -2,7 +2,7 @@
 #AllowedVehiclesList = ['Ford F-150', 'Chevrolet Silverado', 'Tesla Cybertruck', 'Toyota Trundra', 'Nissan Titan']
 import sys
 vehicleFile= r"C:\COP1000 Files\Project\AllowedVehiclesList.txt"
-versionNum=0.5
+versionNum=1.0
 def readVehicleModels(vehicleFile):
         with open (r"C:\COP1000 Files\Project\AllowedVehiclesList.txt", 'r') as file:
             data = file.read().strip()
