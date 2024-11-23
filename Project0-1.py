@@ -52,24 +52,31 @@ def displayMenu():
     return menuSelect
 #replacing old menu with looping menu so I dont have to run the program over and over
 #time to factor out the remaining "EVENTS" into functions
+def menu_Print():
+      print("The Auto Country sales manager has authorized the purchase and selling of the following vehicles:")
+      for car in allowedVehiclesList:
+          print(car)
+      input("Press Enter to return to the main menu.")
+
+
+def add_Car(vehicleFile):
+    addVehicle = input("Please Enter the full Vehicle name you would like to add: ")
+    with open(vehicleFile, "a") as file:
+         file.write(", " + addVehicle.strip())
+    print("You have added "+ addVehicle + " as an authorized vehicle.")
+    input("Press Enter to return to the main menu.")
+
 while True:
      menuSelect = displayMenu()
      if menuSelect == 1:
-          print("The Auto Country sales manager has authorized the purchase and selling of the following vehicles:")
-          for car in allowedVehiclesList:
-               print(car)
-          input("Press Enter to return to the main menu.")
+          menu_Print()
      elif menuSelect ==2:
           print(linebreak)
           searchCar = input("Please Enter the full Vehicle name: ")
           find_Car(searchCar)
           input("Press Enter to return to the main menu.")
      elif menuSelect == 3:
-          addVehicle = input("Please Enter the full Vehicle name you would like to add: ")
-          with open(vehicleFile, "a") as file:
-               file.write(", " + addVehicle.strip())
-          print("You have added "+ addVehicle + " as an authorized vehicle.")
-          input("Press Enter to return to the main menu.")
+          add_Car(vehicleFile)
      elif menuSelect == 4:
           searchCar =input("Please Enter the full Vehicle name you would like to REMOVE: ")
           deleteCar(searchCar, allowedVehiclesList)
